@@ -11,9 +11,7 @@
 | last_name          | string  | null: false |
 | reading_first_name | string  | null: false |
 | reading_last_name  | string  | null: false |
-| birthday_year      | integer | null: false |
-| birthday_month     | integer | null: false |
-| birthday_day       | integer | null: false |
+| birth-date         | date    | null: false |
 
 ### Association
 
@@ -25,7 +23,7 @@
 | Column                  | Type       | Options     |
 | ----------------------- | ---------- | ----------- |
 | name                    | string     | null: false |
-| description             | string     | null: false |
+| description             | text       | null: false |
 | category_id             | integer    | null: false |
 | condition_id            | integer    | null: false |
 | shipping_fee_payer_id   | integer    | null: false |
@@ -50,6 +48,7 @@
 
 - has_one :shipping_address
 - belongs_to :user
+- belongs_to :item
 
 ## shipping_addresses テーブル
 
