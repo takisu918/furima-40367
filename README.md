@@ -11,7 +11,7 @@
 | last_name          | string  | null: false |
 | reading_first_name | string  | null: false |
 | reading_last_name  | string  | null: false |
-| birth-date         | date    | null: false |
+| birth_date         | date    | null: false |
 
 ### Association
 
@@ -28,13 +28,13 @@
 | condition_id            | integer    | null: false |
 | shipping_fee_payer_id   | integer    | null: false |
 | prefecture_id           | integer    | null: false |
-| days-until-shipping_id  | integer    | null: false |
+| days_until_shipping_id  | integer    | null: false |
 | price                   | integer    | null: false |
 | user                    | references | null: false, foreign_key: true |
 
 ### Association
 
-- belong_to :user
+- belongs_to :user
 - has_one  :purchase_record
 
 ## purchase_records テーブル
