@@ -47,7 +47,7 @@ RSpec.describe User, type: :model do
       it 'passwordが5文字以下である' do
         @user.password = 'aaaaa'
         @user.valid?
-        expect(@user.errors.full_messages).to include("Password is invalid")
+        expect(@user.errors.full_messages).to include("Password is too short (minimum is 6 characters)")
       end
 
       it 'passwordが半角数字を含まない' do
