@@ -1,12 +1,24 @@
 class ItemsController < ApplicationController
   def index
-    # 必要な処理を書く
+  end
+
+  def new
+    @item = Item.new
+  end
+
+  def create
+    @item = Item.new(item_params)
+    if @item.save
+      redirect_to root_path
+    else
+      render :new
+    end
   end
 
   private
 
-  def Item_params
-    params.require(:Item).permit(:content, :image).merge(user_id: current_user.id)
+  def item_params
+    params.require(:item).permit(:name, :description, :category_id, :condition_id, :shipping_fee_payer_id, :prefecture_id, :days_until_shipping_id, :price, :image).merge(user_id: current_user.id)
   end
 
 end
