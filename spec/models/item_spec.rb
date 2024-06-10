@@ -2,8 +2,7 @@ require 'rails_helper'
 
 RSpec.describe Item, type: :model do
   before do
-    @user = FactoryBot.create(:user)
-    @item = FactoryBot.build(:item, user: @user)
+    @item = FactoryBot.build(:item)
   end
 
   describe '商品出品登録' do
@@ -26,32 +25,32 @@ RSpec.describe Item, type: :model do
         expect(@item.errors.full_messages).to include("Description can't be blank")
       end
 
-      it 'categoryが空である' do
-        @item.category_id = ''
+      it 'categoryに「---」が選択されている場合' do
+        @item.category_id = 1
         @item.valid?
         expect(@item.errors.full_messages).to include("Category can't be blank")
       end
 
-      it 'conditionが空である' do
-        @item.condition_id = ''
+      it 'conditionに「---」が選択されている場合' do
+        @item.condition_id = 1
         @item.valid?
         expect(@item.errors.full_messages).to include("Condition can't be blank")
       end
 
-      it 'shipping_fee_payerが空である' do
-        @item.shipping_fee_payer_id = ''
+      it 'shipping_fee_payerに「---」が選択されている場合' do
+        @item.shipping_fee_payer_id = 1
         @item.valid?
         expect(@item.errors.full_messages).to include("Shipping fee payer can't be blank")
       end
 
-      it 'prefectureが空である' do
-        @item.prefecture_id = ''
+      it 'prefectureに「---」が選択されている場合' do
+        @item.prefecture_id = 1
         @item.valid?
         expect(@item.errors.full_messages).to include("Prefecture can't be blank")
       end
 
-      it 'days_until_shippingが空である' do
-        @item.days_until_shipping_id = ''
+      it 'days_until_shippingに「---」が選択されている場合' do
+        @item.days_until_shipping_id = 1
         @item.valid?
         expect(@item.errors.full_messages).to include("Days until shipping can't be blank")
       end
@@ -84,6 +83,12 @@ RSpec.describe Item, type: :model do
         @item.price = 10000000
         @item.valid?
         expect(@item.errors.full_messages).to include("Price must be less than or equal to 9999999")
+      end
+
+      it 'ユーザーが紐付いていなければ投稿できない' do
+        @item.user = nil
+        @item.valid?
+        expect(@item.errors.full_messages).to include('User must exist')
       end
 
     end

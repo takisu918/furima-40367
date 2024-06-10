@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const price = priceInput.value;
     if (price >= 300 && price <= 9999999) {
       const fee = Math.floor(price * 0.1);
-      const profitAmount = price - fee;
+      const profitAmount = Math.floor(price - fee);
 
       taxPrice.textContent = fee.toLocaleString();
       profit.textContent = profitAmount.toLocaleString();
