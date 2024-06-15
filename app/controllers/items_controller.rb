@@ -1,7 +1,8 @@
 class ItemsController < ApplicationController
-  before_action :move_to_user_signed_in, only: [:new]
-  before_action :set_item, only: [:show, :edit, :update]
-  before_action :check_user, only: [:edit, :update]
+  before_action :move_to_user_signed_in, only: [:new, :edit, :destroy]
+  before_action :set_item, only: [:show, :edit, :update, :destroy]
+  before_action :check_user, only: [:edit, :update, :destroy]
+
   def index
     @items = Item.order("created_at DESC")
   end
@@ -31,6 +32,11 @@ class ItemsController < ApplicationController
     else
       render :edit, status: :unprocessable_entity
     end
+  end
+
+  def destroy
+    @item.destroy
+    redirect_to root_path
   end
 
 
