@@ -2,6 +2,7 @@ class ItemsController < ApplicationController
   before_action :move_to_user_signed_in, only: [:new, :edit, :destroy]
   before_action :set_item, only: [:show, :edit, :update, :destroy]
   before_action :check_user, only: [:edit, :update, :destroy]
+  before_action :check_purchase_record, only: [:edit]
 
   def index
     @items = Item.order("created_at DESC")
@@ -59,6 +60,12 @@ class ItemsController < ApplicationController
 
   def check_user
     redirect_to root_path unless @item.user == current_user
+  end
+
+  def check_purchase_record
+    unless @item.purchase_record.nil?
+      redirect_to root_path
+    end
   end
 
 end
