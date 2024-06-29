@@ -6,8 +6,8 @@ FactoryBot.define do
     password_confirmation { password }
     first_name { '山田' }
     last_name { '太郎' }
-    reading_first_name { 'タナカ' }  # ここで適切なカタカナの生成方法を書いてみてください。
-    reading_last_name { 'タロウ' }   # ここで適切なカタカナの生成方法を書いてみてください。
+    reading_first_name { 'タナカ' }  
+    reading_last_name { 'タロウ' }   
     birth_date { Faker::Date.birthday(min_age: 18, max_age: 65) } 
   end
 end
