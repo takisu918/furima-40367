@@ -1,7 +1,9 @@
 document.addEventListener('turbo:load', () => {
   const priceInput = document.getElementById("item-price");
-  priceInput.removeEventListener("input", calculatePrice);    // まずイベントリスナーを削除します
-  priceInput.addEventListener("input", calculatePrice);       // 次にイベントリスナーを追加します
+  if(priceInput) {  // priceInputが存在する場合のみイベントリスナーを追加
+    priceInput.removeEventListener("input", calculatePrice);    
+    priceInput.addEventListener("input", calculatePrice);       
+  }
 });
 
 function calculatePrice() {
