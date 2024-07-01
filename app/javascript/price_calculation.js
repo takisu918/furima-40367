@@ -1,19 +1,12 @@
-document.addEventListener('DOMContentLoaded', () => {
-  const priceInput = document.getElementById('item-price');
-  const taxPrice = document.getElementById('add-tax-price');
-  const profit = document.getElementById('profit');
-
-  priceInput.addEventListener('input', () => {
-    const price = priceInput.value;
-    if (price >= 300 && price <= 9999999) {
-      const fee = Math.floor(price * 0.1);
-      const profitAmount = Math.floor(price - fee);
-
-      taxPrice.textContent = fee.toLocaleString();
-      profit.textContent = profitAmount.toLocaleString();
-    } else {
-      taxPrice.textContent = '';
-      profit.textContent = '';
-    }
+window.addEventListener('load', () => {
+  const priceInput = document.getElementById("item-price");
+  priceInput.addEventListener("input", () => {
+    const inputValue = priceInput.value;
+    const addTaxDom = document.getElementById("add-tax-price");
+    const profitDom = document.getElementById("profit");
+    let fee = inputValue * 0.1;
+    let profit = inputValue - fee;
+    addTaxDom.innerHTML = Math.floor(fee);
+    profitDom.innerHTML = Math.floor(profit);
   });
 });
