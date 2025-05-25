@@ -90,6 +90,13 @@
 }
 
 /* /商品画像 */
+.preview-image {
+  width: 300px;         /* より大きく表示 */
+  height: 300px;        /* 縦横比を固定した正方形表示 */
+  object-fit: cover;    /* 画像を中央でトリミングして綺麗に見せる */
+  margin: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* 軽い影 */
+}
 
 /* 商品名と商品説明 */
 .new-items {
